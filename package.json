@@ -1,10 +1,35 @@
 {
   "name": "sql-query-builder",
-  "version": "1.0.0",
+  "version": "0.5.0",
   "description": "Fluent PostgreSQL, MySQL, and SQLite query builder for DQL and DML statements",
+  "license": "ISC",
+  "files": [
+    "dist/src"
+  ],
+  "keywords": [
+    "sql",
+    "query-builder",
+    "typescript",
+    "postgresql",
+    "mysql",
+    "sqlite",
+    "dql",
+    "dml"
+  ],
   "main": "dist/src/sql-query-builder.js",
   "types": "dist/src/sql-query-builder.d.ts",
   "type": "commonjs",
+  "publishConfig": {
+    "access": "public"
+  },
+  "homepage": "https://github.com/tobi2409/sql-query-builder#readme",
+  "bugs": {
+    "url": "https://github.com/tobi2409/sql-query-builder/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tobi2409/sql-query-builder.git"
+  },
   "scripts": {
     "build": "tsc -p tsconfig.json",
     "test": "npm run build && node --test dist/test/**/*.test.js"
@@ -12,7 +37,6 @@
   "engines": {
     "node": ">=18"
   },
-  "private": true,
   "devDependencies": {
     "@types/node": "^24.0.0",
     "typescript": "^5.9.0"
