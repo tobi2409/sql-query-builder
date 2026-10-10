@@ -1,0 +1,14 @@
+{
+  "name": "sql-query-builder",
+  "version": "1.0.0",
+  "description": "Fluent PostgreSQL query builder for DQL and DML statements",
+  "main": "src/sql-query-builder.js",
+  "type": "commonjs",
+  "scripts": {
+    "test": "node --test"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "private": true
+}
