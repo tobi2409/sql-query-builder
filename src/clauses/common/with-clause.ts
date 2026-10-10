@@ -1,19 +1,52 @@
-class WithClause {
+import type {
+    CompilableClause,
+    CompilableInput,
+    SQLCompileContext,
+    SQLValues,
+    SQLValuesInput,
+    WithOptions,
+} from '../../types'
+
+interface WithDefinition {
+    name: string
+    subquery: CompilableInput
+    values: SQLValues
+    recursive: boolean
+    materialized?: boolean
+}
+
+function normalizeValues(values: SQLValuesInput = []): SQLValues {
+    if (Array.isArray(values)) {
+
+        return values
+    }
+
+    return [values]
+}
+
+export default class WithClause implements CompilableClause {
+    definitions: WithDefinition[]
+
     constructor() {
         this.definitions = []
     }
 
-    add(name, subquery, values = [], options = {}) {
+    add(
+        name: string,
+        subquery: CompilableInput,
+        values: SQLValuesInput = [],
+        options: WithOptions = {}
+    ): void {
         this.definitions.push({
             name,
             subquery,
-            values: Array.isArray(values) ? values : [values],
+            values: normalizeValues(values),
             recursive: options.recursive === true,
             materialized: options.materialized,
         })
     }
 
-    toSQL(context) {
+    toSQL(context: SQLCompileContext): string {
         if (this.definitions.length === 0) {
 
             return ''
@@ -35,5 +68,3 @@ class WithClause {
         return `WITH${recursive} ${definitions.join(', ')}`
     }
 }
-
-module.exports = WithClause

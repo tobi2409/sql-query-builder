@@ -1,7 +1,7 @@
-const test = require('node:test')
-const assert = require('node:assert/strict')
+import assert from 'node:assert/strict'
+import test from 'node:test'
 
-const SQLQueryBuilder = require('../src/sql-query-builder')
+import SQLQueryBuilder = require('../../src/sql-query-builder')
 
 test('builds a grouped SELECT query', () => {
     const query = new SQLQueryBuilder()

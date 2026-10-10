@@ -1,13 +1,17 @@
-class GroupByClause {
+import type { CompilableClause, SQLCompileContext } from '../../types'
+
+export default class GroupByClause implements CompilableClause {
+    columns: string[]
+
     constructor() {
         this.columns = []
     }
 
-    add(columns) {
+    add(columns: string | string[]): void {
         this.columns.push(...(Array.isArray(columns) ? columns : [columns]))
     }
 
-    toSQL() {
+    toSQL(_context: SQLCompileContext): string {
         if (this.columns.length === 0) {
 
             return ''
@@ -16,5 +20,3 @@ class GroupByClause {
         return `GROUP BY ${this.columns.join(', ')}`
     }
 }
-
-module.exports = GroupByClause
