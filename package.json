@@ -1,5 +1,5 @@
 {
-  "name": "sql-query-builder",
+  "name": "@tobi2409/sql-query-builder",
   "version": "0.5.0",
   "description": "Fluent PostgreSQL, MySQL, and SQLite query builder for DQL and DML statements",
   "license": "ISC",
